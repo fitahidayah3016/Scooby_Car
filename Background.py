@@ -1,38 +1,40 @@
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-
-x = 1
+x = 0
 a = 3
 
+def init():
+    glClearColor(255.0, 255.0, 255.0, 1.0)
+    gluOrtho2D(-50.0, 50.0, -30.0, 30.0)
 
-# def init():
-#     glClearColor(255.0, 255.0, 255.0, 1.0)
-#     gluOrtho2D(-50.0, 50.0, -30.0, 30.0)
-
-def background1():
-    global x,a,m
+def background():
+    global x,a
     x += a
     if x > 900:
         glRotate(180,0,1,0)
-        
         a *= -1.2
-        
-        print('a =', a)
-    if  x < 0:
+    if x < 0:
         glRotate(180,0,1,0)
         a *= -1.2
-        print('a =', a)
-    if a > 5:
-        a -= a
-
+    print(x)
     kanvas()
     jalan()
-    garis_putus()    
+    garis_putus()
+    rintangan()
+    # rintangan1()
+    # rintangan2()
+    # rintangan3()
+    # rintangan4()
+    # rintangan5()
+    # rintangan6()
+    # rintangan7()
+    # rintangan8()
+    # rintangan9()
+    # rintangan10()
     glFlush()
 
-def kanvas():    
-    print(x)
+def kanvas():   
     glBegin(GL_POLYGON)
     glColor3ub(255, 0, 0)
     glVertex2f(-1000.0 + x,-30.0)
@@ -49,8 +51,8 @@ def jalan():
     glColor3ub(0,0,0)
     glVertex2f(50.0, 20.0 )
     glVertex2f(50.0, -20.0 )
-    glVertex2f(-5000.0, -20.0 )
-    glVertex2f(-5000.0, 20.0 )
+    glVertex2f(-1000.0, -20.0 )
+    glVertex2f(-1000.0, 20.0 )
     glEnd()
 
 def garis_putus():
@@ -613,35 +615,178 @@ def garis_putus():
     glVertex2f(-985.0+x, 10.0)
     glVertex2f(-985.0+x, 5.0)
     glEnd()
-
     glFlush()
 
+# logika rintangan
+def rintangan():
+    global x
+    x_r = -35
+    if x < 450:
+        glPushMatrix()
+        rintangan1(x_r)
+        rintangan2(x_r-15)
+        rintangan3(x_r-30)
+        rintangan4(x_r-45)
+        rintangan5(x_r-60)
+        rintangan6(x_r-75)
+        rintangan7(x_r-90)
+        rintangan8(x_r-155)
+        rintangan9(x_r-195)
+        rintangan10(x_r-305)
+        glPopMatrix()
+    else:
+        x = 0
 
-# def input_keyboard(key,x,y):
-#     global m
-#     # Untuk mengubah posisi kotak
-#     if key == GLUT_KEY_UP:
-#         m += 1
-        
-#     elif key == GLUT_KEY_DOWN:
-#         m -= 1
+def rintangan1(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, -10)
+    glVertex2f(x_r+1+x, -8)
+    glVertex2f(x_r+2+x, -9)
+    glVertex2f(x_r+3+x, -6)
+    glVertex2f(x_r+3+x, -9)
+    glVertex2f(x_r+4+x, -8)
+    glVertex2f(x_r+5+x, -10)
+    glVertex2f(x_r+x, -10)
+    glEnd()
 
-# def update(value):
+def rintangan2(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, 5)
+    glVertex2f(x_r+1+x, 7)
+    glVertex2f(x_r+2+x, -6)
+    glVertex2f(x_r+3+x, -9)
+    glVertex2f(x_r+3+x, 6)
+    glVertex2f(x_r+4+x, 7)
+    glVertex2f(x_r+5+x, 5)
+    glVertex2f(x_r+x, 5)
+    glEnd()
+
+def rintangan3(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, -10)
+    glVertex2f(x_r+1+x, -8)
+    glVertex2f(x_r+2+x, -9)
+    glVertex2f(x_r+3+x, -6)
+    glVertex2f(x_r+3+x, -9)
+    glVertex2f(x_r+4+x, -8)
+    glVertex2f(x_r+5+x, -10)
+    glVertex2f(x_r+x, -10)
+    glEnd()
+
+def rintangan4(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, 5)
+    glVertex2f(x_r+1+x, 7)
+    glVertex2f(x_r+2+x, 6)
+    glVertex2f(x_r+3+x, 9)
+    glVertex2f(x_r+4+x, 6)
+    glVertex2f(x_r+4+x, 7)
+    glVertex2f(x_r+5+x, 5)
+    glVertex2f(x_r+x, 5)
+    glEnd()
+
+def rintangan5(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, -10)
+    glVertex2f(x_r+1+x, -8)
+    glVertex2f(x_r+2+x, -9)
+    glVertex2f(x_r+3+x, -6)
+    glVertex2f(x_r+3+x, -9)
+    glVertex2f(x_r+4+x, -8)
+    glVertex2f(x_r+5+x, -10)
+    glVertex2f(x_r+x, -10)
+    glEnd()
+
+def rintangan6(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, 5)
+    glVertex2f(x_r+1+x, 7)
+    glVertex2f(x_r+2+x, 6)
+    glVertex2f(x_r+3+x, 9)
+    glVertex2f(x_r+3+x, 6)
+    glVertex2f(x_r+4+x, 7)
+    glVertex2f(x_r+5+x, 5)
+    glVertex2f(x_r+x, 5)
+    glEnd()
+
+def rintangan7(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, -10)
+    glVertex2f(x_r+1+x, -8)
+    glVertex2f(x_r+2+x, -9)
+    glVertex2f(x_r+3+x, -6)
+    glVertex2f(x_r+3+x, -9)
+    glVertex2f(x_r+4+x, -9)
+    glVertex2f(x_r+5+x, -10)
+    glVertex2f(x_r+x, -10)
+    glEnd()
+
+def rintangan8(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, -10)
+    glVertex2f(x_r+2+x, -4)
+    glVertex2f(x_r+4+x, -8)
+    glVertex2f(x_r+6+x, 0)
+    glVertex2f(x_r+8+x, -8)
+    glVertex2f(x_r+10+x, -4)
+    glVertex2f(x_r+12+x, -10)
+    glVertex2f(x_r+x, -10)
+    glEnd()
+
+def rintangan9(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, 0)
+    glVertex2f(x_r+5+x, 10)
+    glVertex2f(x_r+10+x, 5)
+    glVertex2f(x_r+12+x, 16)
+    glVertex2f(x_r+14+x, 5)
+    glVertex2f(x_r+19+x, 10)
+    glVertex2f(x_r+25+x, 0)
+    glVertex2f(x_r+x, 0)
+    glEnd()
+
+def rintangan10(x_r):
+    glBegin(GL_POLYGON)
+    glColor3ub(170,169,173)
+    glVertex2f(x_r+x, -10)
+    glVertex2f(x_r+10+x, 10)
+    glVertex2f(x_r+20+x, 0)
+    glVertex2f(x_r+30+x, 10)
+    glVertex2f(x_r+40+x, -10)
+    glVertex2f(x_r+x, -10)
+    glEnd()
+
+# def timer(value):
     
-#     glutPostRedisplay()
-#     glutTimerFunc(100,update,0)
-   
+#     glutTimerFunc(1000,timer,0)
     
-# def main():
-#     glutInit(sys.argv)
-#     glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB)
-#     glutInitWindowSize(1000,600)
-#     glutInitWindowPosition(100,100)
-#     glutCreateWindow("bekgron")
-#     glutDisplayFunc(background1)
-#     # glutSpecialFunc(input_keyboard)
-#     glutTimerFunc(50, update, 0)
-#     init()
-#     glutMainLoop()
 
-# main()
+def update(value):
+    global x 
+    glutPostRedisplay()
+    glutTimerFunc(100,update,0)
+
+def main():
+    glutInit(sys.argv)
+    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB)
+    glutInitWindowSize(1000,600)
+    glutInitWindowPosition(100,100)
+    glutCreateWindow("bekgron")
+    glutDisplayFunc(background)
+    
+
+    # timer(0)
+    glutTimerFunc(50, update, 0)
+    init()
+    glutMainLoop()
+
+main()
